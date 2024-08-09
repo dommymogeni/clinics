@@ -16,19 +16,31 @@ export default function Header() {
 
           {/* navigation links to navigate to other pages of the website */}
           <div className="ml-auto hidden lg:items-center xl:flex">
-            <Link href={""} className="capitalize hover:text-blue-600">
+            <Link href={"/"} className="capitalize hover:text-blue-600">
               Home
             </Link>
-            <Link href={""} className="ml-4 capitalize hover:text-blue-600">
-              Speciality
+            <Link
+              href={"/Specialty"}
+              className="ml-4 capitalize hover:text-blue-600"
+            >
+              Specialty
             </Link>
-            <Link href={""} className="ml-4 capitalize hover:text-blue-600">
+            <Link
+              href={"/procedures"}
+              className="ml-4 capitalize hover:text-blue-600"
+            >
               procedures
             </Link>
-            <Link href={""} className="ml-4 capitalize hover:text-blue-600">
+            <Link
+              href={"/condition"}
+              className="ml-4 capitalize hover:text-blue-600"
+            >
               condition
             </Link>
-            <Link href={""} className="ml-4 capitalize hover:text-blue-600">
+            <Link
+              href={"/register"}
+              className="ml-4 capitalize hover:text-blue-600"
+            >
               claim practionership
             </Link>
           </div>
@@ -39,15 +51,18 @@ export default function Header() {
           </Button>
 
           <div className="hidden lg:ml-4 lg:flex lg:items-center lg:border-l lg:border-slate-900/15 lg:pl-4">
-            <Link
-              href={""}
-              className="-my-2.5 ml-0 inline-flex justify-center rounded-lg border px-4 py-2.5 text-sm font-semibold hover:bg-blue-700 hover:text-white"
-            >
-              Sign up
-            </Link>
             <SignInBtn>
               <Link
-                href={""}
+                href={"/signup"}
+                className="-my-2.5 ml-0 inline-flex justify-center rounded-lg border px-4 py-2.5 text-sm font-semibold hover:bg-blue-700 hover:text-white"
+              >
+                Sign up
+              </Link>
+            </SignInBtn>
+
+            <SignInBtn>
+              <Link
+                href={"/login"}
                 className="-my-2.5 ml-2 inline-flex justify-center rounded-lg bg-blue-900 px-4 py-2.5 text-sm font-semibold text-white hover:bg-blue-700"
               >
                 Sign in

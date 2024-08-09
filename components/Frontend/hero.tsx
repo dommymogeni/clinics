@@ -1,8 +1,7 @@
-import { DownloadCloud } from "lucide-react";
-import Link from "next/link";
-import React from "react";
 import Search from "@/components/Frontend/search";
+import { DownloadCloud } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -13,11 +12,11 @@ export default function Hero() {
           <div className="w-full pl-4 lg:w-5/12">
             <div className="">
               <h1 className="mb-5 text-center text-4xl font-bold !leading-[1.208] text-blue-800 dark:text-white sm:text-[42px] lg:text-left lg:text-[40px] xl:text-5xl">
-                Find dominic
+                Find a doctor
                 <br />
                 and
                 <br />
-                book your bitutu now
+                book your session now
               </h1>
 
               <p className="mb-8 max-w-[480px] text-base">
