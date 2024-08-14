@@ -1,8 +1,12 @@
 "use client";
+import { login } from "@/actions/login";
 import { LoginSchema } from "@/schemas/loginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
-import type { z } from "zod";
+import type * as z from "zod";
+import FormError from "../gen/form-error";
+import FormSuccess from "../gen/form-success";
 import { Button } from "../ui/button";
 import {
   Form,
@@ -16,6 +20,10 @@ import { Input } from "../ui/input";
 import CardWrapper from "./card-wrapper";
 
 const LoginForm = () => {
+  const [isPending, startTransition] = useTransition();
+  const [error, setError] = useState<string | undefined>("");
+  const [success, setSuccess] = useState<string | undefined>("");
+
   const form = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),
     defaultValues: {
@@ -23,6 +31,18 @@ const LoginForm = () => {
       password: "",
     },
   });
+
+  const onSubmit = (values: z.infer<typeof LoginSchema>) => {
+    setError("");
+    setSuccess("");
+
+    startTransition(() => {
+      login(values).then((data) => {
+        setError(data.error);
+        setSuccess(data.success);
+      });
+    });
+  };
 
   return (
     <CardWrapper
@@ -32,7 +52,7 @@ const LoginForm = () => {
       showSocial
     >
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(() => {})} className="space-y-8">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <div className="space-y-4">
             <FormField
               control={form.control}
@@ -43,6 +63,7 @@ const LoginForm = () => {
                   <FormControl>
                     <Input
                       {...field}
+                      disabled={isPending}
                       placeholder="example@gmail.com"
                       type="email"
                     />
@@ -61,6 +82,7 @@ const LoginForm = () => {
                   <FormControl>
                     <Input
                       {...field}
+                      disabled={isPending}
                       placeholder="**********"
                       type="password"
                     />
@@ -71,7 +93,12 @@ const LoginForm = () => {
             />
           </div>
 
-          <Button className="w-full bg-blue-950">login</Button>
+          <FormError message={error} />
+          <FormSuccess message={success} />
+
+          <Button className="w-full bg-blue-950" disabled={isPending}>
+            login
+          </Button>
         </form>
       </Form>
     </CardWrapper>

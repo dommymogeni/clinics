@@ -51,14 +51,14 @@ export default function Header() {
           </Button>
 
           <div className="hidden lg:ml-4 lg:flex lg:items-center lg:border-l lg:border-slate-900/15 lg:pl-4">
-            <SignInBtn>
+            <>
               <Link
                 href={"/signup"}
                 className="-my-2.5 ml-0 inline-flex justify-center rounded-lg border px-4 py-2.5 text-sm font-semibold hover:bg-blue-700 hover:text-white"
               >
                 Sign up
               </Link>
-            </SignInBtn>
+            </>
 
             <SignInBtn>
               <Link
