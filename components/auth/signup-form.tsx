@@ -35,7 +35,6 @@ function SignupForm() {
       lastName: "",
       email: "",
       password: "",
-      confirmPassword: "",
     },
   });
 
@@ -61,7 +60,7 @@ function SignupForm() {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <div className="space-y-4">
-            <div className="-mx-3 flex flex-col md:flex-row space-y-4 md:space-y-0">
+            <div className="-mx-3 flex flex-col space-y-4 md:flex-row md:space-y-0">
               <div className="px-3 md:w-1/2">
                 <FormField
                   control={form.control}
@@ -82,7 +81,7 @@ function SignupForm() {
                   )}
                 />
               </div>
-              <div className="md:w-1/2 px-3">
+              <div className="px-3 md:w-1/2">
                 <FormField
                   control={form.control}
                   name="lastName"
@@ -142,48 +141,24 @@ function SignupForm() {
               )}
             />
 
-            <div className="-mx-3 flex">
-              <div className="w-1/2 px-3">
-                <FormField
-                  control={form.control}
-                  name="password"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>password</FormLabel>
-                      <FormControl>
-                        <Input
-                          {...field}
-                          disabled={isPending}
-                          placeholder="**********"
-                          type="password"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-              <div className="w-1/2 px-3">
-                <FormField
-                  control={form.control}
-                  name="confirmPassword"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Confirm password</FormLabel>
-                      <FormControl>
-                        <Input
-                          {...field}
-                          disabled={isPending}
-                          placeholder="**********"
-                          type="password"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-            </div>
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>password</FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      disabled={isPending}
+                      placeholder="**********"
+                      type="password"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
           </div>
 
           <FormError message={error} />
