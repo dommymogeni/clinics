@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Clinics doctor booking and appointment application
 
-## Getting Started
+## 🚀 Getting Started
 
-First, run the development server:
+### 1. Clone the repository and install dependencies
+
+```bash
+git clone https://github.com/dommymogeni/clinics.git
+cd clinics
+npm install
+```
+
+### 2. Configure your local environment
+
+Create a .env file in the root directory that contains the
+
+```bash
+touch .env
+cat .env
+AUTH_SECRET="your-auth-secret"
+DATABASE_URL="your-database-connection-string for port:6543"
+DIRECT_URL="your-database-connection-string for port:5432"
+```
+
+Make sure to fill out every env variable. Also, don't forget to add environment variables to configure any of the [supported providers](https://authjs.dev/reference/core/providers) for Auth.js login.
+
+### 3. Start the application
+
+To run your site locally, use:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+on your local machine web browser visit [http://localhost:3000/](http://localhost:3000/) to vivew your site that has been compiled
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Start the application
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+To view hosted version of the web application visit this:[https://clinics-ruby.vercel.app](https://clinics-ruby.vercel.app)
 
-## Learn More
+# Refrences
 
-To learn more about Next.js, take a look at the following resources:
+### 1. Auth js authentatication
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Auth.js
+Authentication for the Web.
+Free and open source.
+| title | Link refrence |
+| :--- | :---- |
+| Authentication for the web | [https://authjs.dev/](https://authjs.dev/) |
+| prisma adapter and schema setup | [https://authjs.dev/getting-started/adapters/prisma](https://authjs.dev/getting-started/adapters/prisma) |
+| prisma edge compatibility | <ol> <li>[https://authjs.dev/guides/edge-compatibility](https://authjs.dev/guides/edge-compatibility)</li><li>[https://www.fjobeir.com/using-nextauthrequest-in-nextjs-middleware/](https://www.fjobeir.com/using-nextauthrequest-in-nextjs-middleware/) </li><li>[https://github.com/umairjameel321/authjsv5nextjs/blob/main/auth.ts](https://github.com/umairjameel321/authjsv5nextjs/blob/main/auth.ts)</li><li>[https://github.com/ndom91/authjs-prisma-edge-example/blob/main/README.md?plain=1](https://github.com/ndom91/authjs-prisma-edge-example/blob/main/README.md?plain=1)</li></ol> |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 📝 License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+MIT

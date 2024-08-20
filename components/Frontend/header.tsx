@@ -38,10 +38,10 @@ export default function Header() {
               condition
             </Link>
             <Link
-              href={"/register"}
+              href={"/ListService"}
               className="ml-4 capitalize hover:text-blue-600"
             >
-              claim practionership
+              List service
             </Link>
           </div>
 
