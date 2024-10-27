@@ -12,9 +12,9 @@ import { PiUsersThreeBold } from "react-icons/pi";
 
 export default function SidebarLinks() {
   const pathname = usePathname();
-  const role = useCurrenUsertRole();
+  const role:any = useCurrenUsertRole();
 
-  const roleLinks = {
+  const roleLinks:any = {
     USER: [
       { title: "dashboard", href: "/dashboard", icon: MdOutlineSpaceDashboard },
       {

@@ -12,7 +12,7 @@ export default {
       clientId: process.env.AUTH_GOOGLE_ID,
       clientSecret: process.env.AUTH_GOOGLE_SECRET,
       async profile(profile) {
-        return { ...profile };
+        return { role: profile.role ?? "user", ...profile };
       },
     }),
 

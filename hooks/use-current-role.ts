@@ -4,6 +4,5 @@ import { useSession } from "next-auth/react";
 
 export const useCurrenUsertRole = () => {
   const { data: session } = useSession();
-
   return session?.user.role;
 };
