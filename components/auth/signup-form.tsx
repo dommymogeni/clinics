@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 
 import CardWrapper from "@/components/auth/card-wrapper";
 import { Button } from "@/components/ui/button";
@@ -22,6 +22,7 @@ import { userRegistration } from "@/actions/userRegister";
 import FormError from "@/components/gen/form-error";
 import FormSuccess from "@/components/gen/form-success";
 import { UserRegisterSchema } from "@/schemas/userRegister";
+import type { UserRole } from "@prisma/client";
 
 function SignupForm() {
   const [isPending, startTransition] = useTransition();
@@ -35,8 +36,23 @@ function SignupForm() {
       lastName: "",
       email: "",
       password: "",
+      role: "USER" as UserRole,
     },
   });
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const roleParam = urlParams.get("role") as UserRole | null;
+
+    // Set role from URL or default to "USER"
+    if (roleParam && ["USER", "DOCTOR", "ADMIN"].includes(roleParam)) {
+      form.setValue("role", roleParam);
+    } else {
+      form.setValue("role", "USER");
+    }
+  }, [form]);
+
+
 
   const onSubmit = (values: z.infer<typeof UserRegisterSchema>) => {
     setError("");
@@ -93,7 +109,7 @@ function SignupForm() {
                           {...field}
                           disabled={isPending}
                           placeholder="doe"
-                          type="email"
+                          type="text"
                         />
                       </FormControl>
                       <FormMessage />

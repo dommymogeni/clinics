@@ -27,4 +27,5 @@ export const UserRegisterSchema = z.object({
     .refine((password) => /[!@#$%^&*]/.test(password), {
       message: "Must contain atleast 1 special character",
     }),
+  role: z.enum(["USER", "DOCTOR", "ADMIN"]).default("USER"),
 });

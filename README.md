@@ -45,11 +45,20 @@ To view hosted version of the web application visit this:[https://clinics-ruby.v
 Auth.js
 Authentication for the Web.
 Free and open source.
-| title | Link refrence |
-| :--- | :---- |
-| Authentication for the web | [https://authjs.dev/](https://authjs.dev/) |
+
+|title|Link refrence|
+|---|----|
+|Authentication for the web|[https://authjs.dev/](https://authjs.dev/)|
 | prisma adapter and schema setup | [https://authjs.dev/getting-started/adapters/prisma](https://authjs.dev/getting-started/adapters/prisma) |
 | prisma edge compatibility | <ol> <li>[https://authjs.dev/guides/edge-compatibility](https://authjs.dev/guides/edge-compatibility)</li><li>[https://www.fjobeir.com/using-nextauthrequest-in-nextjs-middleware/](https://www.fjobeir.com/using-nextauthrequest-in-nextjs-middleware/) </li><li>[https://github.com/umairjameel321/authjsv5nextjs/blob/main/auth.ts](https://github.com/umairjameel321/authjsv5nextjs/blob/main/auth.ts)</li><li>[https://github.com/ndom91/authjs-prisma-edge-example/blob/main/README.md?plain=1](https://github.com/ndom91/authjs-prisma-edge-example/blob/main/README.md?plain=1)</li></ol> |
+
+### 2. sending emails
+
+sending emails to the users
+|title|link refrences|
+|:--- |:--- |
+|node mailer|[ https://mailtrap.io/blog/sending-emails-with-nodemailer/](https://mailtrap.io/blog/sending-emails-with-nodemailer/)|
+|react email|[https://react.email/docs/integrations/nodemailer](https://react.email/docs/integrations/nodemailer)|
 
 ## 📝 License
 

@@ -1,0 +1,129 @@
+https://github.com/Marcosfitzsimons/multi-step-form?tab=readme-ov-file - multistep
+https://github.com/birobirobiro/awesome-shadcn-ui - shadcn components
+
+scrollings
+https://www.youtube.com/watch?v=QzW03hyw_bU&ab_channel=CodeCommerce
+
+useSearchParams error debugging
+https://fossies.org/linux/next.js/errors/missing-suspense-with-csr-bailout.mdx
+
+perfect scrollbar documentation
+https://tw-elements.com/docs/standard/components/scroll-back-to-top-button/
+https://www.creative-tim.com/learning-lab/nextjs/react-perfect-scrollbar/argon-dashboard
+
+database schema
+model User {
+id Int @id @default(autoincrement())
+username String @unique
+passwordHash String
+email String @unique
+firstName String
+lastName String
+role UserRole
+phoneNumber String?
+createdAt DateTime @default(now())
+updatedAt DateTime @updatedAt
+providerProfile ProviderProfile?
+appointments Appointment[]
+ratings Rating[]
+}
+
+enum UserRole {
+PATIENT
+PROVIDER
+}
+
+model ProviderProfile {
+id Int @id @default(autoincrement())
+user User @relation(fields: [userId], references: [id])
+userId Int @unique
+specialization String?
+biography String?
+profilePictureUrl String?
+experienceYears Int?
+gender Gender
+languagesSpoken String?
+certifications String?
+education String?
+createdAt DateTime @default(now())
+updatedAt DateTime @updatedAt
+availabilities Availability[]
+ratings Rating[]
+schedules Schedule[]
+}
+
+enum Gender {
+MALE
+FEMALE
+NON_BINARY
+PREFER_NOT_TO_SAY
+}
+
+model Availability {
+id Int @id @default(autoincrement())
+provider ProviderProfile @relation(fields: [providerId], references: [id])
+providerId Int
+startTime Time
+endTime Time
+dayOfWeek DayOfWeek
+notes String?
+}
+
+enum DayOfWeek {
+MONDAY
+TUESDAY
+WEDNESDAY
+THURSDAY
+FRIDAY
+SATURDAY
+SUNDAY
+}
+
+model Rating {
+id Int @id @default(autoincrement())
+provider ProviderProfile @relation(fields: [providerId], references: [id])
+providerId Int
+patient User @relation(fields: [patientId], references: [id])
+patientId Int
+rating Int @default(1) @check(rating >= 1 && rating <= 5)
+comment String?
+createdAt DateTime @default(now())
+}
+
+model Schedule {
+id Int @id @default(autoincrement())
+provider ProviderProfile @relation(fields: [providerId], references: [id])
+providerId Int
+appointment Appointment? @relation(fields: [appointmentId], references: [id])
+appointmentId Int?
+startTime DateTime
+endTime DateTime
+status ScheduleStatus
+createdAt DateTime @default(now())
+updatedAt DateTime @updatedAt
+}
+
+enum ScheduleStatus {
+AVAILABLE
+BUSY
+UNAVAILABLE
+}
+
+model Appointment {
+id Int @id @default(autoincrement())
+patient User @relation(fields: [patientId], references: [id])
+patientId Int
+provider ProviderProfile @relation(fields: [providerId], references: [id])
+providerId Int
+appointmentTime DateTime
+status AppointmentStatus
+createdAt DateTime @default(now())
+updatedAt DateTime @updatedAt
+}
+
+enum AppointmentStatus {
+SCHEDULED
+COMPLETED
+CANCELED
+NO_SHOW
+}

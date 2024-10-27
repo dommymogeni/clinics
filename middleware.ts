@@ -7,7 +7,6 @@ import { DEFAULT_LOGIN_REDIRECT, apiAuthPrefix, authRoutes, publicRoutes } from 
 const { auth } = NextAuth(authConfig);
 
 export default auth(
-  // biome-ignore lint/suspicious/noConfusingVoidType: <explanation>
   (req: NextRequest & { auth: Session | null }): Response | void => {
     const { nextUrl } = req;
     const isLoggedIn = !!req.auth;
@@ -16,7 +15,7 @@ export default auth(
     const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
     const isAuthRoute = authRoutes.includes(nextUrl.pathname);
 
-    if (isApiAuthRoute) return;
+    if (isApiAuthRoute) return ;
 
     if (isAuthRoute) {
       if (isLoggedIn) {
@@ -35,9 +34,7 @@ export default auth(
 
 export const config = {
   matcher: [
-    // Skip Next.js internals and all static files, unless found in search params
     "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
-    // Always run for API routes
     "/(api|trpc)(.*)",
   ],
 };

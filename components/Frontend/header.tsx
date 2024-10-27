@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 
 export default function Header() {
   return (
-    <header className="relative z-50 w-full flex-none text-sm font-semibold leading-6">
+    <header className="w-full flex-none text-sm font-semibold leading-6">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative flex items-center py-4 text-blue-900">
           {/* divider btwn the navbar and the hero section */}

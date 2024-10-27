@@ -1,4 +1,3 @@
-// import bcrypt from "bcrypt"; {this library produces an error while comparing thhe passwords in the databasse}
 import bcrypt from "bcryptjs";
 import type { NextAuthConfig } from "next-auth";
 import credentials from "next-auth/providers/credentials";
@@ -9,7 +8,13 @@ import { LoginSchema } from "./schemas/loginSchema";
 // Notice this is only an object, not a full Auth.js instance
 export default {
   providers: [
-    Google({}),
+    Google({
+      clientId: process.env.AUTH_GOOGLE_ID,
+      clientSecret: process.env.AUTH_GOOGLE_SECRET,
+      async profile(profile) {
+        return { ...profile };
+      },
+    }),
 
     credentials({
       authorize: async (credentials) => {
@@ -18,12 +23,10 @@ export default {
         if (validatedFields.success) {
           const { email, password } = validatedFields.data;
 
-          // biome-ignore lint/suspicious/noExplicitAny: <explanation>
           const user: any = await getUserByEmail(email);
-          if (!user || !user.password) return null;
+          if (!user || (user && "password" in user === null)) return null;
 
           const passwordMatching = bcrypt.compare(password, user.password);
-
           if (await passwordMatching) return user;
         }
 

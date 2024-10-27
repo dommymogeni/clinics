@@ -1,12 +1,7 @@
 "use client";
 
 import Header from "@/components/auth/header";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-} from "@/components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import BackButton from "./back-button";
 import Social from "./social";
 
@@ -34,7 +29,12 @@ export default function CardWrapper({
       <CardContent>{children}</CardContent>
       {showSocial && (
         <CardFooter className="block">
-          <p className="mb-4 block w-full text-center">OR</p>
+          <div className="pb-6">
+            <span className="relative flex justify-center">
+              <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-transparent bg-gradient-to-r from-transparent via-gray-500 to-transparent opacity-75" />
+              <span className="relative z-10 bg-white px-6">OR</span>
+            </span>
+          </div>
           <Social />
         </CardFooter>
       )}
