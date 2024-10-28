@@ -11,9 +11,7 @@ import { MdCalendarMonth, MdInbox, MdOutlineSpaceDashboard } from "react-icons/m
 import { PiUsersThreeBold } from "react-icons/pi";
 
 export default function SidebarLinks() {
-  type Role = "USER" | "DOCTOR" | "ADMIN";
   const pathname = usePathname();
-  const role = useCurrentUsertRole();
 
   const roleLinks = {
     USER: [
@@ -57,7 +55,8 @@ export default function SidebarLinks() {
     ],
   };
 
-  const sidebarLinks: any[] = roleLinks[role];
+  const role = useCurrentUsertRole();
+  const sidebarLinks = role ? roleLinks[role] : [];
 
   return (
     <ul className="mb-0 mt-0.5 flex list-none flex-col pl-0">
@@ -85,7 +84,4 @@ export default function SidebarLinks() {
       })}
     </ul>
   );
-}
-function useCurrenUserRole() {
-  throw new Error("Function not implemented.");
 }
