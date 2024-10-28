@@ -13,8 +13,8 @@ import {
 
 interface NavItem {
   icon?: JSX.Element;
-  href?: string;
-  title?: string;
+  href: string;
+  title: string;
 }
 
 interface SettingsNavProps {
@@ -34,10 +34,10 @@ const SettingsNav = ({ settingsNavItems }: SettingsNavProps) => {
           </SelectTrigger>
 
           <SelectContent>
-            {settingsNavItems.map((item, index) => (
+            {settingsNavItems.map((item) => (
               <SelectItem
                 value={item.title}
-                key={item.title}
+                key={item.href}
                 className="cursor-pointer"
               >
                 <div className="flex gap-x-4 px-2 py-1">
