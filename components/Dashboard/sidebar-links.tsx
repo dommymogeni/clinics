@@ -2,7 +2,6 @@
 
 import { useCurrentUsertRole } from "@/hooks/use-current-role";
 import { cn } from "@/lib/utils";
-import { UserRole } from "@prisma/client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FaTasks } from "react-icons/fa";
@@ -12,8 +11,9 @@ import { MdCalendarMonth, MdInbox, MdOutlineSpaceDashboard } from "react-icons/m
 import { PiUsersThreeBold } from "react-icons/pi";
 
 export default function SidebarLinks() {
+  type Role = "USER" | "DOCTOR" | "ADMIN";
   const pathname = usePathname();
-  const role: UserRole = useCurrentUsertRole();
+  const role = useCurrentUsertRole();
 
   const roleLinks = {
     USER: [
