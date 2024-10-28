@@ -6,9 +6,7 @@ import { SiTicktick } from "react-icons/si";
 export default function DocHero() {
   return (
     <section className="mx-auto max-w-screen-xl">
-      {/* flex container for the both of image and intro */}
       <div className="mx-auto flex w-full flex-wrap pb-6 pt-3">
-        {/* hero intro container div */}
         <div className="z-0 flex flex-col gap-6 border-card bg-primary/10 px-10 md:w-1/2 md:rounded-md md:py-10 md:pl-8 md:pr-20">
           <div className="text-left font-bold">
             <h1 className="scroll-m-20 text-[32px]/[40px] font-extrabold -tracking-wider">
@@ -56,7 +54,6 @@ export default function DocHero() {
           </div>
         </div>
 
-        {/* image cotainer div */}
         <div className="z-10 -ml-10 flex flex-wrap items-center rounded-3xl md:w-1/2">
           <Image
             sizes="(max-width: 1536px) 100vw, 1536px"
